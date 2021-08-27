@@ -1,0 +1,61 @@
+﻿<Window x:Class="Demoland.Wpf.Calendar.MainWindow"
+xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
+        xmlns:system="clr-namespace:System;assembly=System.Runtime"
+        SizeToContent="WidthAndHeight"
+        Title="MainWindow" ResizeMode="NoResize" 
+        AllowsTransparency="True" WindowStyle="None" Background="Transparent">
+
+    <Grid Height="914" Width="844">
+        <Border CornerRadius="8" Margin="14" MouseMove="OnMouseMove" Effect="{StaticResource EffectShadow3}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Border Height="60" CornerRadius="8 8 0 0"
+                        Background="{StaticResource Brush.Background.Accent.Dark}" >
+                    <Grid Margin="18 0">
+                        <TextBlock Text="日历" FontSize="26" 
+                                   VerticalAlignment="Center" HorizontalAlignment="Left"
+                                   Foreground="{StaticResource Brush.Foreground.Accent}" />
+                        <Button Style="{StaticResource ButtonIcon}"
+                                Click="CloseButton_OnClick"
+                                hc:BorderElement.CornerRadius="3" 
+                                Width="36" Height="36" HorizontalAlignment="Right"
+                                Foreground="{StaticResource Brush.Fill.CloseIcon}"
+                                Background="{StaticResource Brush.Background.Close}"
+                                hc:IconElement.Geometry="{StaticResource CloseGeometry}"/>
+                    </Grid>
+                </Border>
+                <Border Grid.Row="1" Height="192" CornerRadius="4 4 0 0"
+                        Background="{StaticResource Brush.Background.Accent}">
+                    <Grid>
+                        <StackPanel Orientation="Vertical" Margin="36" HorizontalAlignment="Left">
+                            <TextBlock x:Name="YearTextBlock" FontSize="26" Margin="6 0 0 0"
+                                       Foreground="{StaticResource Brush.Foreground.Accent}" />
+                            <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                                <TextBlock x:Name="DateTextBlock" FontSize="60" 
+                                           VerticalAlignment="Bottom"
+                                           Foreground="{StaticResource Brush.Foreground.Accent}" />
+                                <TextBlock x:Name="WeekTextBlock" FontSize="30"
+                                           VerticalAlignment="Bottom" Margin="20 0 0 8"
+                                           Foreground="{StaticResource Brush.Foreground.Accent}" />
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+                <Border Grid.Row="2" CornerRadius="4 4 8 8" Margin="0 -4 0 0"
+                        Background="{StaticResource Brush.Background}"/>
+            </Grid>
+        </Border>
+        <Viewbox Height="654" VerticalAlignment="Bottom">
+            <Calendar x:Name="Calendar" SelectedDate="{x:Static system:DateTime.Today}" Width="380"
+                      SelectionMode="SingleDate" SelectedDatesChanged="Calendar_OnSelectedDatesChanged"/>
+        </Viewbox>
+    </Grid>
+
+</Window>
+
