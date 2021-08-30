@@ -7,7 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Document\**" />
+    <EmbeddedResource Remove="Document\**" />
+    <None Remove="Document\**" />
+    <Page Remove="Document\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Calendar.csproj.DotSettings" />
+    <None Remove="ReadMe.md" />
   </ItemGroup>
 
 	<ItemGroup>
